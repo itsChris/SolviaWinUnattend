@@ -158,7 +158,7 @@ Date: 2023-06-10 (YYYY-MM-DD)
 				<SynchronousCommand wcm:action="add">
 					<CommandLine>powershell Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/itsChris/uasetup/main/winua.ps1'))</CommandLine>
 					<Description>Solvia - Finalize Windows setup</Description>
-					<Order>2</Order>
+					<Order>1</Order>
 					<RequiresUserInput>false</RequiresUserInput>
 				</SynchronousCommand>
 			</FirstLogonCommands>
