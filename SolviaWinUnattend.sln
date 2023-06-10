@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolviaWinUnattend", "SolviaIsoEdit\SolviaWinUnattend.csproj", "{B6F795CB-6B71-45E4-846D-DA38DF83CC89}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6F795CB-6B71-45E4-846D-DA38DF83CC89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6F795CB-6B71-45E4-846D-DA38DF83CC89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6F795CB-6B71-45E4-846D-DA38DF83CC89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6F795CB-6B71-45E4-846D-DA38DF83CC89}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F4BA6A68-C565-4B37-A053-1B59F01ECD31}
+	EndGlobalSection
+EndGlobal
