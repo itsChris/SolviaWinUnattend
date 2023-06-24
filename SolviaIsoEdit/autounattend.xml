@@ -13,6 +13,10 @@ Solution by Solvia
 https://www.solvia.ch
 info@solvia.ch
 Date: 2023-06-10 (YYYY-MM-DD)
+
+		To use this file:
+        Save this file on the root of a USB flash drive with the filename: Autounattend.xml
+        Put the Windows DVD and the USB key into a new x64-UEFI PC.
 -->
 <unattend xmlns="urn:schemas-microsoft-com:unattend" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
 	<settings pass="offlineServicing"></settings>
