@@ -1,0 +1,22 @@
+﻿:: ISO to USB
+- Plug in a USB Stick (>6GB)
+
+: Get The Disk Number
+Get-Disk | where BusType -eq 'USB'
+
+: Clear the Drive
+Clear-Disk -Number 1 -RemoveData -Confirm:$false -PassThru
+
+: Creat new Partition
+New-Partition -DiskNumber 1 -UseMaximumSize -AssignDriveLetter | Format-Volume -FileSystem NTFS
+
+: Mount the ISO
+Mount-DiskImage -ImagePath C:\SW_DVD9_Win_Pro_11_21H2_64BIT_English_Pro_Ent_EDU_N_MLF_-3_X22-89962.ISO
+
+: Get the device ID
+Get-CimInstance Win32_LogicalDisk | ?{ $_.DriveType -eq 5} | select DeviceID
+
+: Copy the content of the mounted ISO to the USB Drive
+xcopy E:\ D:\ /e
+
+:: if you want to reinstall your Windows 10/11 Computer, hold shift when clicking on restart computer, then choose the USB Drive to boot from
