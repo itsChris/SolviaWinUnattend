@@ -214,6 +214,13 @@ Date: 2023-06-10 (YYYY-MM-DD)
 					<Order>1</Order>
 					<RequiresUserInput>false</RequiresUserInput>
 				</SynchronousCommand>
+				<SynchronousCommand wcm:action="add">
+					<Order>2</Order>
+					<Description>Set password to never expires</Description>
+					<CommandLine>wmic USERACCOUNT set PasswordExpires=FALSE</CommandLine>
+					<!--<CommandLine>wmic USERACCOUNT WHERE Name=&apos;ladmin&apos; set PasswordExpires=FALSE</CommandLine>-->
+					<RequiresUserInput>false</RequiresUserInput>
+				</SynchronousCommand>
 			</FirstLogonCommands>
 			<OOBE>
 				<!--
