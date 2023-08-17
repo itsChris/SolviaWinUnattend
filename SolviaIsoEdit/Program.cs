@@ -3,7 +3,8 @@
 class Program
 {
     static string isoFile = "SolviaAutoUnattend.iso";
-    static string AutoUnattendXml = "autounattend.xml";
+    static string AutoUnattendXmlSource = "";
+    static string AutoUnattendXmlDest = "autounattend.xml";
     static string readMeFile = "readme.txt";
 
     public static string IsoFileFullPath { get; } = CurrentDirectory() + @$"\{isoFile}";
@@ -11,6 +12,31 @@ class Program
 
     static void Main()
     {
+        // ask user for BIOS with MBR or UEFI with GPT with gpt.. (old ESX only supports BIOS -> MBR)
+        Console.WriteLine("BIOS with MBR or UEFI with GPT?");
+        Console.WriteLine("1. BIOS w/MBR");
+        Console.WriteLine("2. UEFI w/GPT");
+        Console.Write("Enter your choice (1 or 2): ");
+
+        string input = Console.ReadLine();
+
+        switch (input)
+        {
+            case "1":
+                Console.WriteLine("You've chosen BIOS w/MBR");
+                AutoUnattendXmlSource = "autounattend-BIOS-MBR.xml";
+                break;
+            case "2":
+                Console.WriteLine("You've chosen UEFI w/PGT");
+                AutoUnattendXmlSource = "autounattend-UEFI-GPT.xml";
+                break;
+            default:
+                Console.WriteLine("Invalid choice.");
+                break;
+        }
+
+        
+
         if (File.Exists(IsoFileFullPath))
         {
             Console.WriteLine($"File {IsoFileFullPath} exists. Do you want to (D)elete it, (R)ename it, or (E)xit the application? (D/R/E)");
@@ -94,11 +120,11 @@ class Program
             CDBuilder builder = new CDBuilder();
             builder.UseJoliet = true;
 
-            Console.WriteLine($"Trying to add {AutoUnattendXml} to {IsoFileFullPath}");
+            Console.WriteLine($"Trying to add {AutoUnattendXmlSource} to {IsoFileFullPath}");
             // add additional XML file
             if (File.Exists(GetAutoUnattendFile()))
             {
-                builder.AddFile(AutoUnattendXml, GetAutoUnattendFile());
+                builder.AddFile(AutoUnattendXmlDest, GetAutoUnattendFile());
             }
             else
             {
@@ -128,7 +154,7 @@ class Program
             throw new Exception("Could not get the directory of the executable");
         }
 
-        string filePath = Path.Combine(CurrentDirectory(), "autounattend.xml");
+        string filePath = Path.Combine(CurrentDirectory(), AutoUnattendXmlSource);
 
         if (!File.Exists(filePath))
         {
@@ -137,6 +163,4 @@ class Program
         Console.WriteLine(File.ReadAllText(filePath));
         return filePath;
     }
-
-
 }
