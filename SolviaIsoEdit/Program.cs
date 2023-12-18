@@ -16,7 +16,7 @@ class Program
         Console.WriteLine("BIOS with MBR or UEFI with GPT?");
         Console.WriteLine("1. BIOS w/MBR");
         Console.WriteLine("2. UEFI w/GPT");
-        Console.WriteLine("2. UEFI manual partitioning");
+        Console.WriteLine("3. UEFI manual partitioning");
         Console.Write("Enter your choice (1 or 2): ");
 
         string input = Console.ReadLine();
