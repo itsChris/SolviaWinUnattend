@@ -16,6 +16,7 @@ class Program
         Console.WriteLine("BIOS with MBR or UEFI with GPT?");
         Console.WriteLine("1. BIOS w/MBR");
         Console.WriteLine("2. UEFI w/GPT");
+        Console.WriteLine("2. UEFI manual partitioning");
         Console.Write("Enter your choice (1 or 2): ");
 
         string input = Console.ReadLine();
@@ -30,12 +31,15 @@ class Program
                 Console.WriteLine("You've chosen UEFI w/PGT");
                 AutoUnattendXmlSource = "autounattend-UEFI-GPT.xml";
                 break;
+
+            case "3":
+                Console.WriteLine("You've chosen UEFI w/PGT");
+                AutoUnattendXmlSource = "autounattend-UEFI-GPT-ManualPart.xml";
+                break;
             default:
                 Console.WriteLine("Invalid choice.");
                 break;
         }
-
-        
 
         if (File.Exists(IsoFileFullPath))
         {

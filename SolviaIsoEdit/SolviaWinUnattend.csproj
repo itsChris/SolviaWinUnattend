@@ -15,6 +15,9 @@
     <None Update="autounattend-BIOS-MBR.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="autounattend-UEFI-GPT-ManualPart.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="autounattend-UEFI-GPT.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+ _______  _______  _                _________ _______ 
+(  ____ \(  ___  )( \      |\     /|\__   __/(  ___  )
+| (    \/| (   ) || (      | )   ( |   ) (   | (   ) |
+| (_____ | |   | || |      | |   | |   | |   | (___) |
+(_____  )| |   | || |      ( (   ) )   | |   |  ___  |
+      ) || |   | || |       \ \_/ /    | |   | (   ) |
+/\____) || (___) || (____/\  \   /  ___) (___| )   ( |
+\_______)(_______)(_______/   \_/   \_______/|/     \|
+
+Solution by Solvia
+https://www.solvia.ch
+info@solvia.ch
+Date: 2023-06-10 (YYYY-MM-DD)
+
+		To use this file:
+        Save this file on the root of a USB flash drive with the filename: Autounattend.xml
+        Put the Windows DVD and the USB key into a new x64-UEFI PC.
+-->
+<unattend xmlns="urn:schemas-microsoft-com:unattend" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
+	<settings pass="offlineServicing"></settings>
+	<settings pass="windowsPE">
+		<component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<SetupUILanguage>
+				<UILanguage>en-US</UILanguage>
+			</SetupUILanguage>
+			<InputLocale>0807:00000807</InputLocale>
+			<SystemLocale>de-CH</SystemLocale>
+			<UILanguage>en-US</UILanguage>
+			<UserLocale>de-CH</UserLocale>
+		</component>
+		<component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<ImageInstall>
+				<OSImage>
+					<InstallTo>
+						<DiskID>0</DiskID>
+						<PartitionID>3</PartitionID>
+					</InstallTo>
+				</OSImage>
+			</ImageInstall>
+			<UserData>
+				<ProductKey>
+					<WillShowUI>OnError</WillShowUI>
+					<Key>VK7JG-NPHTM-C97JM-9MPGT-3V66T</Key>
+				</ProductKey>
+				<AcceptEula>true</AcceptEula>
+				<FullName>Solvia IT</FullName>
+				<Organization>Solvia GmbH</Organization>
+			</UserData>
+			<RunSynchronous>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>1</Order>
+					<Path>cmd /c mkdir %SystemDrive%\Solvia</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>2</Order>
+					<Path>reg add HKLM\SYSTEM\Setup\LabConfig /v BypassTPMCheck /t REG_DWORD /d 1 /f</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>3</Order>
+					<Path>reg add HKLM\SYSTEM\Setup\LabConfig /v BypassSecureBootCheck /t REG_DWORD /d 1 /f</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>4</Order>
+					<Path>reg add HKLM\SYSTEM\Setup\LabConfig /v BypassRAMCheck /t REG_DWORD /d 1 /f</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>5</Order>
+					<Path>reg add HKLM\SYSTEM\Setup\LabConfig /v BypassCPUCheck /t REG_DWORD /d 1 /f</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>6</Order>
+					<Path>reg add HKLM\SYSTEM\Setup\LabConfig /v BypassStorageCheck /t REG_DWORD /d 1 /f</Path>
+				</RunSynchronousCommand>
+			</RunSynchronous>
+		</component>
+	</settings>
+	<settings pass="generalize"></settings>
+	<settings pass="specialize">
+		<component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS"
+            xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<InputLocale>0807:00000807</InputLocale>
+			<SystemLocale>de-CH</SystemLocale>
+			<UILanguage>en-US</UILanguage>
+			<UserLocale>de-CH</UserLocale>
+		</component>
+		<component name="Microsoft-Windows-Security-SPP-UX" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS"
+            xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<SkipAutoActivation>true</SkipAutoActivation>
+		</component>
+		<component name="Microsoft-Windows-SQMApi" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS"
+            xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<CEIPEnabled>0</CEIPEnabled>
+		</component>
+		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS"
+            xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<ComputerName>SOLWKS001</ComputerName>
+			<RegisteredOwner>IT-Department</RegisteredOwner>
+			<RegisteredOrganization>Solvia GmbH, Switzerland</RegisteredOrganization>
+			<ProductKey>W269N-WFGWX-YVC9B-4J6C9-T83GX</ProductKey>
+			<OEMInformation>
+				<Manufacturer>Solvia GmbH</Manufacturer>
+				<SupportHours>Monday - Friday 08.00 - 12.00 and 13.30 - 17.00</SupportHours>
+				<SupportPhone>+41 44 885 00 10</SupportPhone>
+				<SupportURL>https://www.solvia.ch</SupportURL>
+				<Logo>%windir%\system32\oobe\solvia\oemlogo.bmp</Logo>
+			</OEMInformation>
+		</component>
+	</settings>
+	<settings pass="auditSystem"></settings>
+	<settings pass="auditUser"></settings>
+	<settings pass="oobeSystem">
+		<component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<InputLocale>0807:00000807</InputLocale>
+			<SystemLocale>de-CH</SystemLocale>
+			<UILanguage>en-US</UILanguage>
+			<UserLocale>de-CH</UserLocale>
+		</component>
+		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<UserAccounts>
+				<LocalAccounts>
+					<LocalAccount wcm:action="add">
+						<Name>ladmin</Name>
+						<Group>Administrators</Group>
+						<Password>
+							<Value>$Welcome!12$</Value>
+							<PlainText>true</PlainText>
+						</Password>
+					</LocalAccount>
+
+					<LocalAccount wcm:action="add">
+						<Password>
+							<Value>$Solvia-Rox-Your-IT!</Value>
+							<PlainText>true</PlainText>
+						</Password>
+						<Description>Solvia Maintenance Account</Description>
+						<DisplayName>Solvia IT</DisplayName>
+						<Group>Administrators;Power Users</Group>
+						<Name>Solvia</Name>
+					</LocalAccount>
+					
+					<LocalAccount wcm:action="add">
+						<Name>luser</Name>
+						<Group>Users</Group>
+						<Password>
+							<Value>$Welcome!12$</Value>
+							<PlainText>true</PlainText>
+						</Password>
+					</LocalAccount>
+				</LocalAccounts>
+			</UserAccounts>
+			<AutoLogon>
+				<Password>
+					<Value>$Welcome!12$</Value>
+					<PlainText>true</PlainText>
+				</Password>
+				<Enabled>true</Enabled>
+				<LogonCount>100</LogonCount>
+				<Username>ladmin</Username>
+			</AutoLogon>
+			<FirstLogonCommands>
+				<SynchronousCommand wcm:action="add">
+					<CommandLine>powershell Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/itsChris/uasetup/main/winua.ps1'))</CommandLine>
+					<Description>Solvia - Finalize Windows setup</Description>
+					<Order>1</Order>
+					<RequiresUserInput>false</RequiresUserInput>
+				</SynchronousCommand>
+				<SynchronousCommand wcm:action="add">
+					<Order>2</Order>
+					<Description>Set password to never expires</Description>
+					<CommandLine>wmic USERACCOUNT set PasswordExpires=FALSE</CommandLine>
+					<!--<CommandLine>wmic USERACCOUNT WHERE Name=&apos;ladmin&apos; set PasswordExpires=FALSE</CommandLine>-->
+					<RequiresUserInput>false</RequiresUserInput>
+				</SynchronousCommand>
+			</FirstLogonCommands>
+			<OOBE>
+				<!--
+				  <ProtectYourPC>
+					1 = Recommended (default) level of protection
+					2 = Only updates are installed
+					3 = Automatic protection is disabled
+				  </ProtectYourPC>
+				-->
+				<HideEULAPage>true</HideEULAPage>
+				<HideLocalAccountScreen>true</HideLocalAccountScreen>
+				<HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>
+				<HideOnlineAccountScreens>true</HideOnlineAccountScreens>
+				<HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
+				<NetworkLocation>Work</NetworkLocation>
+				<ProtectYourPC>1</ProtectYourPC>
+				<SkipMachineOOBE>true</SkipMachineOOBE>
+				<SkipUserOOBE>true</SkipUserOOBE>
+			</OOBE>
+		</component>
+	</settings>
+</unattend>
