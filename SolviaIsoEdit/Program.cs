@@ -2,12 +2,15 @@
 
 class Program
 {
-    static string isoFile = "SolviaAutoUnattend.iso";
+    static string isoFile = "";
     static string AutoUnattendXmlSource = "";
     static string AutoUnattendXmlDest = "autounattend.xml";
     static string readMeFile = "readme.txt";
 
-    public static string IsoFileFullPath { get; } = CurrentDirectory() + @$"\{isoFile}";
+    public static string IsoFileFullPath()
+    {
+        return CurrentDirectory() + @$"\{isoFile}";
+    }
     public static string ReadMeFileFullPath { get; } = CurrentDirectory() + @$"\{readMeFile}";
 
     static void Main()
@@ -26,22 +29,25 @@ class Program
             case "1":
                 Console.WriteLine("You've chosen BIOS w/MBR");
                 AutoUnattendXmlSource = "autounattend-BIOS-MBR.xml";
+                isoFile = "SolviaAutoUnattend-BIOS-MBR.iso";
                 break;
             case "2":
-                Console.WriteLine("You've chosen UEFI w/PGT");
+                Console.WriteLine("You've chosen UEFI w/GPT");
                 AutoUnattendXmlSource = "autounattend-UEFI-GPT.xml";
+                isoFile = "SolviaAutoUnattend-UEFI-GPT.iso";
                 break;
 
             case "3":
-                Console.WriteLine("You've chosen UEFI w/PGT");
+                Console.WriteLine("You've chosen UEFI w/GPT");
                 AutoUnattendXmlSource = "autounattend-UEFI-GPT-ManualPart.xml";
+                isoFile = "SolviaAutoUnattend-UEFI-GPT-ManualPart.iso";
                 break;
             default:
                 Console.WriteLine("Invalid choice.");
                 break;
         }
 
-        if (File.Exists(IsoFileFullPath))
+        if (File.Exists(IsoFileFullPath()))
         {
             Console.WriteLine($"File {IsoFileFullPath} exists. Do you want to (D)elete it, (R)ename it, or (E)xit the application? (D/R/E)");
             var choice = Console.ReadLine();
@@ -51,7 +57,7 @@ class Program
                 case "D":
                     try
                     {
-                        File.Delete(IsoFileFullPath);
+                        File.Delete(IsoFileFullPath());
                         Console.WriteLine("File successfully deleted.");
                         CreateAutoUnattendIso();
                     }
@@ -63,13 +69,13 @@ class Program
                 case "R":
                     try
                     {
-                        string directory = Path.GetDirectoryName(IsoFileFullPath);
-                        string extension = Path.GetExtension(IsoFileFullPath);
-                        string fileName = Path.GetFileNameWithoutExtension(IsoFileFullPath);
+                        string directory = Path.GetDirectoryName(IsoFileFullPath());
+                        string extension = Path.GetExtension(IsoFileFullPath());
+                        string fileName = Path.GetFileNameWithoutExtension(IsoFileFullPath());
                         string newFileName = $"{DateTime.Now:yyyyMMddHHmmss}_{fileName}{extension}";
                         string newFilePath = Path.Combine(directory, newFileName);
 
-                        File.Move(IsoFileFullPath, newFilePath);
+                        File.Move(IsoFileFullPath(), newFilePath);
                         Console.WriteLine($"File successfully renamed to: {newFileName}");
                         CreateAutoUnattendIso();
                     }
@@ -89,7 +95,7 @@ class Program
         }
         else
         {
-            Console.WriteLine($"File {IsoFileFullPath} does not exist.");
+            Console.WriteLine($"File {IsoFileFullPath()} does not exist.");
             CreateAutoUnattendIso();
         }
         System.Diagnostics.Process.Start("explorer.exe", ".");
@@ -140,7 +146,7 @@ class Program
             }
             Console.WriteLine($"Trying to build/save ISO file {IsoFileFullPath}");
             // save the new ISO
-            builder.Build(IsoFileFullPath);
+            builder.Build(IsoFileFullPath());
         }
         catch (Exception ex)
         {
