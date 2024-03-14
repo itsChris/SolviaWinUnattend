@@ -1,7 +1,3 @@
-Based on the provided `Program.cs` code, I'll outline a `README.md` for the GitHub repository at `https://github.com/itsChris/SolviaWinUnattend`. This README will provide an overview of the project, its usage, installation requirements, and how to contribute.
-
----
-
 # SolviaWinUnattend
 
 SolviaWinUnattend is a CLI tool developed by Christian Casutt at Solvia GmbH, Switzerland, designed to simplify the creation of Windows unattended installation ISOs. The tool allows users to choose between BIOS with MBR or UEFI with GPT settings for their installation media, and it automatically integrates a corresponding `autounattend.xml` file into the ISO. This utility is particularly useful for creating custom Windows installation media that automates the installation process, tailored for use in various environments, including older ESX versions that only support BIOS with MBR.
