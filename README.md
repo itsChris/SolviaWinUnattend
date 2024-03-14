@@ -41,6 +41,21 @@ This automated installation configuration file is designed to streamline the dep
 Important Note
 The provided XML configurations, such as autounattend-UEFI-GPT.xml, are examples of what can be achieved with the SolviaWinUnattend tool. Users are encouraged to customize these files according to their specific installation requirements and policies. The tool supports various configurations including BIOS/MBR setups, UEFI/GPT, and UEFI with manual partitioning, each with its respective autounattend.xml template.
 
+## Configuration Details
+
+The `autounattend-UEFI-GPT.xml` is pre-configured to support installations on UEFI systems with a GPT partition table. This XML file is part of the SolviaWinUnattend tool and automates various steps of the Windows installation process, including but not limited to:
+
+- Disk partitioning tailored for UEFI systems.
+- Input of product keys and license terms acceptance.
+- Creation of user accounts and setting regional preferences.
+- Application of network settings and joining of domains, if applicable.
+
+This automated installation configuration file is designed to streamline the deployment of Windows operating systems in enterprise environments, reducing manual setup time and potential for human error.
+
+### Important Note
+
+The provided XML configurations, such as `autounattend-UEFI-GPT.xml`, are examples of what can be achieved with the SolviaWinUnattend tool. Users are encouraged to customize these files according to their specific installation requirements and policies. The tool supports various configurations including BIOS/MBR setups, UEFI/GPT, and UEFI with manual partitioning, each with its respective `autounattend.xml` template.
+
 ## Contributing
 
 Contributions to SolviaWinUnattend are welcome. If you have improvements or bug fixes, please follow these steps:
