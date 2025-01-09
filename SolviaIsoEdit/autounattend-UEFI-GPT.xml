@@ -87,7 +87,7 @@ Date: 2023-06-10 (YYYY-MM-DD)
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>10</Order>
-					<Path>cmd.exe /c echo CREATE PARTITION EFI SIZE=100 &gt;&gt; %SystemDrive%\diskpart.txt</Path>
+					<Path>cmd.exe /c echo CREATE PARTITION EFI SIZE=250 &gt;&gt; %SystemDrive%\diskpart.txt</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>11</Order>
